@@ -1,0 +1,15 @@
+C:\Users\SBI\source\repos\lenguajes-de-ultima-generacion\PatronesDeDiseno\StrategyDemo\bin\Debug\net8.0\StrategyDemo.exe
+C:\Users\SBI\source\repos\lenguajes-de-ultima-generacion\PatronesDeDiseno\StrategyDemo\bin\Debug\net8.0\StrategyDemo.deps.json
+C:\Users\SBI\source\repos\lenguajes-de-ultima-generacion\PatronesDeDiseno\StrategyDemo\bin\Debug\net8.0\StrategyDemo.runtimeconfig.json
+C:\Users\SBI\source\repos\lenguajes-de-ultima-generacion\PatronesDeDiseno\StrategyDemo\bin\Debug\net8.0\StrategyDemo.dll
+C:\Users\SBI\source\repos\lenguajes-de-ultima-generacion\PatronesDeDiseno\StrategyDemo\bin\Debug\net8.0\StrategyDemo.pdb
+C:\Users\SBI\source\repos\lenguajes-de-ultima-generacion\PatronesDeDiseno\StrategyDemo\obj\Debug\net8.0\StrategyDemo.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\SBI\source\repos\lenguajes-de-ultima-generacion\PatronesDeDiseno\StrategyDemo\obj\Debug\net8.0\StrategyDemo.AssemblyInfoInputs.cache
+C:\Users\SBI\source\repos\lenguajes-de-ultima-generacion\PatronesDeDiseno\StrategyDemo\obj\Debug\net8.0\StrategyDemo.AssemblyInfo.cs
+C:\Users\SBI\source\repos\lenguajes-de-ultima-generacion\PatronesDeDiseno\StrategyDemo\obj\Debug\net8.0\StrategyDemo.csproj.CoreCompileInputs.cache
+C:\Users\SBI\source\repos\lenguajes-de-ultima-generacion\PatronesDeDiseno\StrategyDemo\obj\Debug\net8.0\StrategyDemo.sourcelink.json
+C:\Users\SBI\source\repos\lenguajes-de-ultima-generacion\PatronesDeDiseno\StrategyDemo\obj\Debug\net8.0\StrategyDemo.dll
+C:\Users\SBI\source\repos\lenguajes-de-ultima-generacion\PatronesDeDiseno\StrategyDemo\obj\Debug\net8.0\refint\StrategyDemo.dll
+C:\Users\SBI\source\repos\lenguajes-de-ultima-generacion\PatronesDeDiseno\StrategyDemo\obj\Debug\net8.0\StrategyDemo.pdb
+C:\Users\SBI\source\repos\lenguajes-de-ultima-generacion\PatronesDeDiseno\StrategyDemo\obj\Debug\net8.0\StrategyDemo.genruntimeconfig.cache
+C:\Users\SBI\source\repos\lenguajes-de-ultima-generacion\PatronesDeDiseno\StrategyDemo\obj\Debug\net8.0\ref\StrategyDemo.dll

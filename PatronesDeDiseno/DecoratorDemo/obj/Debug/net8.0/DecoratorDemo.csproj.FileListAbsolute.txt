@@ -1,0 +1,15 @@
+C:\Users\SBI\source\repos\lenguajes-de-ultima-generacion\PatronesDeDiseno\DecoratorDemo\bin\Debug\net8.0\DecoratorDemo.exe
+C:\Users\SBI\source\repos\lenguajes-de-ultima-generacion\PatronesDeDiseno\DecoratorDemo\bin\Debug\net8.0\DecoratorDemo.deps.json
+C:\Users\SBI\source\repos\lenguajes-de-ultima-generacion\PatronesDeDiseno\DecoratorDemo\bin\Debug\net8.0\DecoratorDemo.runtimeconfig.json
+C:\Users\SBI\source\repos\lenguajes-de-ultima-generacion\PatronesDeDiseno\DecoratorDemo\bin\Debug\net8.0\DecoratorDemo.dll
+C:\Users\SBI\source\repos\lenguajes-de-ultima-generacion\PatronesDeDiseno\DecoratorDemo\bin\Debug\net8.0\DecoratorDemo.pdb
+C:\Users\SBI\source\repos\lenguajes-de-ultima-generacion\PatronesDeDiseno\DecoratorDemo\obj\Debug\net8.0\DecoratorDemo.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\SBI\source\repos\lenguajes-de-ultima-generacion\PatronesDeDiseno\DecoratorDemo\obj\Debug\net8.0\DecoratorDemo.AssemblyInfoInputs.cache
+C:\Users\SBI\source\repos\lenguajes-de-ultima-generacion\PatronesDeDiseno\DecoratorDemo\obj\Debug\net8.0\DecoratorDemo.AssemblyInfo.cs
+C:\Users\SBI\source\repos\lenguajes-de-ultima-generacion\PatronesDeDiseno\DecoratorDemo\obj\Debug\net8.0\DecoratorDemo.csproj.CoreCompileInputs.cache
+C:\Users\SBI\source\repos\lenguajes-de-ultima-generacion\PatronesDeDiseno\DecoratorDemo\obj\Debug\net8.0\DecoratorDemo.sourcelink.json
+C:\Users\SBI\source\repos\lenguajes-de-ultima-generacion\PatronesDeDiseno\DecoratorDemo\obj\Debug\net8.0\DecoratorDemo.dll
+C:\Users\SBI\source\repos\lenguajes-de-ultima-generacion\PatronesDeDiseno\DecoratorDemo\obj\Debug\net8.0\refint\DecoratorDemo.dll
+C:\Users\SBI\source\repos\lenguajes-de-ultima-generacion\PatronesDeDiseno\DecoratorDemo\obj\Debug\net8.0\DecoratorDemo.pdb
+C:\Users\SBI\source\repos\lenguajes-de-ultima-generacion\PatronesDeDiseno\DecoratorDemo\obj\Debug\net8.0\DecoratorDemo.genruntimeconfig.cache
+C:\Users\SBI\source\repos\lenguajes-de-ultima-generacion\PatronesDeDiseno\DecoratorDemo\obj\Debug\net8.0\ref\DecoratorDemo.dll
