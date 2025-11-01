@@ -28,21 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            dataGridLaboratorios = new DataGridView();
+            dgvLaboratorios = new DataGridView();
             btnAgregar = new Button();
             btnEditar = new Button();
             btnEliminar = new Button();
-            ((System.ComponentModel.ISupportInitialize)dataGridLaboratorios).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvLaboratorios).BeginInit();
             SuspendLayout();
             // 
-            // dataGridLaboratorios
+            // dgvLaboratorios
             // 
-            dataGridLaboratorios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridLaboratorios.Location = new Point(12, 62);
-            dataGridLaboratorios.Name = "dataGridLaboratorios";
-            dataGridLaboratorios.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridLaboratorios.Size = new Size(605, 358);
-            dataGridLaboratorios.TabIndex = 0;
+            dgvLaboratorios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvLaboratorios.Location = new Point(12, 62);
+            dgvLaboratorios.Name = "dgvLaboratorios";
+            dgvLaboratorios.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvLaboratorios.Size = new Size(512, 358);
+            dgvLaboratorios.TabIndex = 0;
             // 
             // btnAgregar
             // 
@@ -78,21 +78,21 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(634, 438);
+            ClientSize = new Size(540, 438);
             Controls.Add(btnEliminar);
             Controls.Add(btnEditar);
             Controls.Add(btnAgregar);
-            Controls.Add(dataGridLaboratorios);
+            Controls.Add(dgvLaboratorios);
             Name = "frmLaboratorios";
             Text = "Gestion Laboratorios";
             Load += frmLaboratorios_Load;
-            ((System.ComponentModel.ISupportInitialize)dataGridLaboratorios).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvLaboratorios).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private DataGridView dataGridLaboratorios;
+        private DataGridView dgvLaboratorios;
         private Button btnAgregar;
         private Button btnEditar;
         private Button btnEliminar;

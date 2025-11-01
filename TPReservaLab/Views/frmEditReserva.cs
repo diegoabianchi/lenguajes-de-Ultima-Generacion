@@ -12,47 +12,150 @@ namespace TPReservaLab.Views
 {
     public partial class frmEditReserva : Form
     {
-        private readonly ReservaRepository _reservaRepository;
-        private int? _reservaId;
-        public frmEditReserva(int? reservaId = null)
+        private readonly ReservaController _reservaController;
+        private int? _reservaId; // Null: Alta, Valor: Edición
+
+        public frmEditReserva(ReservaController reservaController)
         {
             InitializeComponent();
-            _reservaRepository = new ReservaRepository(); // Usa la conexión directa
-            _reservaId = reservaId;
+            _reservaController = reservaController;
+            _reservaId = null;
+            this.Text = "Nueva Reserva";
 
-            CargarDatosDeReferencia(); // Carga ComboBoxes (Laboratorios, Profesores, Tipos)
-
-            // Asocia el evento de cambio de tipo para ocultar/mostrar paneles
+            // 1. Suscribir el evento ANTES de CargarDatosDeReferencia
             cbxTipoReserva.SelectedIndexChanged += cbxTipoReserva_SelectedIndexChanged;
 
-            if (_reservaId.HasValue)
+            LimpiarCampos();
+            CargarDatosDeReferencia();
+            if (cbxTipoReserva.Items.Count > 0)
             {
-                CargarDatosReserva(_reservaId.Value);
+                cbxTipoReserva.SelectedIndex = 0; // Forzar la selección del primer elemento
             }
-            else
+        }
+        public void LoadData(int reservaId)
+        {
+            this.Text = "Agregar/Modificar Reserva";
+            _reservaId = reservaId;
+            CargarDatosReserva(reservaId);
+
+            // No se permitirá modificar el tipo de reserva una vez creada
+            cbxTipoReserva.Enabled = false;
+        }
+        private void CargarDatosDeReferencia()
+        {
+            // 1. LABORATORIOS
+            cbxLaboratorio.DataSource = _reservaController.ObtenerDatosLaboratorios();
+            cbxLaboratorio.DisplayMember = "Numero";
+            cbxLaboratorio.ValueMember = "LaboratorioId";
+            cbxLaboratorio.SelectedIndex = -1;
+
+            // 2. PROFESORES
+            cbxProfesor.DataSource = _reservaController.ObtenerDatosProfesores();
+            cbxProfesor.DisplayMember = "NombreCompleto";
+            cbxProfesor.ValueMember = "ProfesorId";
+            cbxProfesor.SelectedIndex = -1;
+
+            // 3. TIPOS DE RESERVA
+            cbxTipoReserva.DataSource = _reservaController.ObtenerDatosTiposReserva();
+            cbxTipoReserva.DisplayMember = "Codigo";
+            cbxTipoReserva.ValueMember = "TipoReservaId";
+            cbxTipoReserva.SelectedIndex = -1;
+
+            // 4. CARRERAS
+            cbxCarrera.DataSource = _reservaController.ObtenerDatosCarreras();
+            cbxCarrera.DisplayMember = "Nombre";
+            cbxCarrera.ValueMember = "CarreraId";
+            cbxCarrera.SelectedIndex = -1;
+
+            // 5. ASIGNATURAS
+            cbxAsignatura.DataSource = _reservaController.ObtenerDatosAsignaturas();
+            cbxAsignatura.DisplayMember = "Nombre";
+            cbxAsignatura.ValueMember = "AsignaturaId";
+            cbxAsignatura.SelectedIndex = -1;
+
+            // 6. COMISIONES
+            cbxComision.DataSource = _reservaController.ObtenerDatosComisiones();
+            cbxComision.DisplayMember = "Codigo";
+            cbxComision.ValueMember = "ComisionId";
+            cbxComision.SelectedIndex = -1;
+
+        }
+        private void CargarDatosReserva(int id)
+        {
+            try
             {
-                // Establecer un valor inicial para mostrar un panel al inicio (ej. Cuatrimestral)
-                cbxTipoReserva.SelectedIndex = 0;
+                var reserva = _reservaController.GetReservaParaEdicion(id);
+                if (reserva == null)
+                {
+                    MessageBox.Show("Reserva no encontrada.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    this.Close();
+                    return;
+                }
+
+                // Propiedades comunes
+                dtpFechaInicio.Value = reserva.FechaInicio;
+                dtpFechaFin.Value = reserva.FechaFin;
+                cbxLaboratorio.SelectedValue = reserva.LaboratorioId;
+                cbxProfesor.SelectedValue = reserva.ProfesorId;
+                cbxAsignatura.SelectedValue = reserva.AsignaturaId;
+                cbxCarrera.SelectedValue = reserva.CarreraId;
+                cbxComision.SelectedValue = reserva.ComisionId;
+                cbxTipoReserva.SelectedValue = reserva.TipoReservaId;
+                txtObservaciones.Text = reserva.Observaciones;
+
+                // Propiedades especificas
+                if (reserva is ReservaCuatrimestral cuatrimestral)
+                {
+                    cbxTipoReserva.SelectedValue = cuatrimestral.TipoReservaId;
+                    dtpFechaFinCuatri.Value = cuatrimestral.FechaFinCuatri;
+
+                    if (cuatrimestral.Frecuencia == "Semanal")
+                        rdbSemanal.Checked = true;
+                    else
+                        rdbQuincenal.Checked = true;
+                }
+                else if (reserva is ReservaEventual eventual)
+                {
+                    cbxTipoReserva.SelectedValue = eventual.TipoReservaId;
+                    txtCantSemanas.Text = eventual.CantidadSemanas.ToString();
+                }
+
+                mostrarOcultarPaneles();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cargar datos de la reserva: {ex.Message}", "Error de Carga", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
             }
         }
 
-        // --- LÓGICA DE HERENCIA: Mostrar/Ocultar Paneles ---
-        private void cbxTipoReserva_SelectedIndexChanged(object sender, EventArgs e)
+        private void mostrarOcultarPaneles()
         {
             string tipo = cbxTipoReserva.Text;
-
             gbCuatrimestral.Visible = (tipo == "Cuatrimestral");
             gbEventual.Visible = (tipo == "Eventual");
+        }
+        private void cbxTipoReserva_SelectedIndexChanged(object? sender, EventArgs e)
+        {
+            mostrarOcultarPaneles();
+        }
+        private void LimpiarCampos()
+        {
+            txtCantSemanas.Text = string.Empty;
+            txtObservaciones.Text = string.Empty;
+            dtpFechaInicio.Value = DateTime.Today;
+            dtpFechaFin.Value = DateTime.Today.AddHours(2);
+            dtpFechaFinCuatri.Value = DateTime.Today.AddMonths(4);
         }
 
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
+            Reserva reserva;
+
             try
             {
-                Reserva reserva;
-
-                // Lógica para construir el objeto del MODELO (Reserva)
+                // Primero seteo los datos especificos según el tipo de reserva
                 if (cbxTipoReserva.Text == "Cuatrimestral")
                 {
                     var cuatrimestral = new ReservaCuatrimestral
@@ -70,113 +173,53 @@ namespace TPReservaLab.Views
                     };
                     reserva = eventual;
                 }
-                else { throw new ArgumentException("Debe seleccionar un tipo de reserva."); }
+                else
+                {
+                    throw new ArgumentException("Debe seleccionar un tipo de reserva.");
+                }
 
-                // Asignar propiedades comunes
-                reserva.LaboratorioId = (int)cbxLaboratorio.SelectedValue;
-                reserva.ProfesorId = (int)cbxProfesor.SelectedValue;
-                // ... Asignar AsignaturaId, CarreraId, ComisionId
+                // Luego asigo las propiedades base comunes
+                reserva.LaboratorioId = Convert.ToInt32(cbxLaboratorio.SelectedValue);
+                reserva.ProfesorId = Convert.ToInt32(cbxProfesor.SelectedValue);
+                reserva.CarreraId = Convert.ToInt32(cbxCarrera.SelectedValue);
+                reserva.AsignaturaId = Convert.ToInt32(cbxAsignatura.SelectedValue);
+                reserva.ComisionId = Convert.ToInt32(cbxComision.SelectedValue);
+                reserva.TipoReservaId = Convert.ToInt32(cbxTipoReserva.SelectedValue);
                 reserva.FechaInicio = dtpFechaInicio.Value;
                 reserva.FechaFin = dtpFechaFin.Value;
+                reserva.Observaciones = txtObservaciones.Text;
+                reserva.IsActive = true;
 
-                // Llamada al Repositorio (la validación de conflicto debe estar aquí o en el Repositorio)
                 if (_reservaId.HasValue)
                 {
-                    // MODIFICACIÓN: La validación de conflicto en el Repositorio debe excluir esta reserva.
+                    // MODIFICACIÓN (UPDATE)
                     reserva.ReservaId = _reservaId.Value;
-                    _reservaRepository.Update(reserva);
+                    _reservaController.ModificarReserva(reserva);
                 }
                 else
                 {
-                    // ALTA: La validación de conflicto se ejecuta sobre todas las reservas.
-                    _reservaRepository.Add(reserva);
+                    _reservaController.AltaReserva(reserva);
                 }
 
-                MessageBox.Show("Reserva guardada con éxito.", "Éxito");
+                MessageBox.Show("Reserva guardada con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
+
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Verifique que todos los campos numéricos sean válidos.", "Error de Formato", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show(ex.Message, "Error de Entrada", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             catch (InvalidOperationException ex)
             {
-                // Captura el error de Conflicto de Horario o validación de negocio
                 MessageBox.Show(ex.Message, "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error al guardar: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void CargarDatosDeReferencia()
-        {
-            // 1. LABORATORIOS
-            cbxLaboratorio.DataSource = _reservaRepository.GetLaboratorios();
-            cbxLaboratorio.DisplayMember = "Numero";
-            cbxLaboratorio.ValueMember = "LaboratorioId";
-
-            // 2. PROFESORES
-            cbxProfesor.DataSource = _reservaRepository.GetProfesores();
-            cbxProfesor.DisplayMember = "NombreCompleto";
-            cbxProfesor.ValueMember = "ProfesorId";
-
-            // 3. TIPOS DE RESERVA
-            cbxTipoReserva.DataSource = _reservaRepository.GetTiposReserva();
-            cbxTipoReserva.DisplayMember = "Codigo";
-            cbxTipoReserva.ValueMember = "TipoReservaId";
-
-            // 4. CARRERAS
-            cbxCarrera.DataSource = _reservaRepository.GetCarreras();
-            cbxCarrera.DisplayMember = "Nombre";
-            cbxCarrera.ValueMember = "CarreraId";
-
-            // 5. ASIGNATURAS
-            cbxAsignatura.DataSource = _reservaRepository.GetAsignaturas();
-            cbxAsignatura.DisplayMember = "Nombre";
-            cbxAsignatura.ValueMember = "AsignaturaId";
-
-            // 6. COMISIONES
-            cbxComision.DataSource = _reservaRepository.GetComisiones();
-            cbxComision.DisplayMember = "Codigo";
-            cbxComision.ValueMember = "ComisionId";
-        }
-
-        private void CargarDatosReserva(int id)
-        {
-            var reserva = _reservaRepository.GetReservaDetalle(id);
-
-            if (reserva == null)
-            {
-                MessageBox.Show("Reserva no encontrada.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                this.Close();
-                return;
-            }
-
-            // --- CARGA DE PROPIEDADES Comunes ---
-            dtpFechaInicio.Value = reserva.FechaInicio;
-            dtpFechaFin.Value = reserva.FechaFin;
-
-            // Establecer el valor seleccionado en los ComboBoxes (usando ValueMember)
-            cbxLaboratorio.SelectedValue = reserva.LaboratorioId;
-            cbxProfesor.SelectedValue = reserva.ProfesorId;
-            cbxAsignatura.SelectedValue = reserva.AsignaturaId;
-            cbxCarrera.SelectedValue = reserva.CarreraId;
-            cbxComision.SelectedValue = reserva.ComisionId;
-            cbxTipoReserva.SelectedValue = reserva.TipoReservaId;
-
-            if (reserva is ReservaCuatrimestral cuatrimestral)
-            {
-                // 1. Es Cuatrimestral: Habilitar el panel Cuatrimestral (el evento SelectedIndexChanged ya lo hace)
-                dtpFechaFinCuatri.Value = cuatrimestral.FechaFinCuatri;
-
-                if (cuatrimestral.Frecuencia == "Semanal")
-                    rdbSemanal.Checked = true;
-                else
-                    rdbQuincenal.Checked = true;
-
-            }
-            else if (reserva is ReservaEventual eventual)
-            {
-                // 2. Es Eventual: Habilitar el panel Eventual
-                txtCantSemanas.Text = eventual.CantidadSemanas.ToString();
+                MessageBox.Show($"Error fatal del sistema: {ex.Message}", "Error Inesperado", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

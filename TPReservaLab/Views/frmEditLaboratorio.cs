@@ -12,57 +12,77 @@ namespace TPReservaLab.Views
 {
     public partial class frmEditLaboratorio : Form
     {
- 
-        public int? id;
-        Laboratorio oLaboratorio = null;
-        public frmEditLaboratorio(int? id = null)
+
+        private readonly LaboratorioController _laboratorioController;
+        private readonly ILaboratorioRepository _laboratorioRepository; // Necesario para el GetById
+        private int? _laboratorioId; // Null: Alta, Valor: Edición
+        public frmEditLaboratorio(LaboratorioController laboratorioController, ILaboratorioRepository laboratorioRepository)
         {
             InitializeComponent();
-            this.id = id;
-            if (id != null)
-            {
-                CargaDatosLaboratorio();
-            }
+            _laboratorioController = laboratorioController;
+            _laboratorioRepository = laboratorioRepository;
         }
-        private void CargaDatosLaboratorio()
+        public void LoadData(int laboratorioId)
         {
-            using (var context = new ReservaLabContext())
+            _laboratorioId = laboratorioId;
+            this.Text = "Modificar Laboratorio";
+            CargarDatosLaboratorio(laboratorioId);
+        }
+        private void CargarDatosLaboratorio(int id)
+        {
+            var lab = _laboratorioRepository.GetById(id);
+
+            if (lab != null)
             {
-                oLaboratorio = context.Laboratorios.Find(id);
-                txtNumero.Text = oLaboratorio.Numero.ToString();
-                txtUbicacion.Text = oLaboratorio.UbicacionPiso.ToString();
-                txtCapacidad.Text = oLaboratorio.CapacidadPuestos.ToString();
+                txtNumero.Text = lab.Numero.ToString();
+                txtUbicacion.Text = lab.UbicacionPiso;
+                txtCapacidad.Text = lab.CapacidadPuestos.ToString();
+            }
+            else
+            {
+                throw new KeyNotFoundException($"Laboratorio con ID {id} no encontrado.");
             }
         }
 
 
+        // EVENTOS DEL FORMULARIO
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            using (var context = new ReservaLabContext())
+            try
             {
-                if (oLaboratorio == null)
+                var lab = new Laboratorio
                 {
-                    // Creacion de nuevo alumno
-                    Laboratorio newLab = new Laboratorio
-                    {
-                        Numero = int.Parse(txtNumero.Text),
-                        UbicacionPiso = txtUbicacion.Text,
-                        CapacidadPuestos = int.Parse(txtCapacidad.Text)
-                        
-                    };
-                    context.Laboratorios.Add(newLab);
+                    Numero = int.Parse(txtNumero.Text),
+                    UbicacionPiso = txtUbicacion.Text,
+                    CapacidadPuestos = int.Parse(txtCapacidad.Text)
+                };
+
+                if (_laboratorioId.HasValue)
+                {
+                    // MODIFICACIÓN (UPDATE)
+                    lab.LaboratorioId = _laboratorioId.Value;
+                    _laboratorioController.ModificarLaboratorio(lab);
                 }
                 else
                 {
-                    // Modificacion 
-                    oLaboratorio.Numero = int.Parse(txtNumero.Text);
-                    oLaboratorio.UbicacionPiso = txtUbicacion.Text;
-                    oLaboratorio.CapacidadPuestos = int.Parse(txtCapacidad.Text);
-                    context.Entry(oLaboratorio).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                    // ALTA (CREATE)
+                    _laboratorioController.CrearLaboratorio(lab);
                 }
 
-                context.SaveChanges();
+                MessageBox.Show("Laboratorio guardado con éxito.", "Éxito");
                 this.Close();
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Verifique que los campos 'Número' y 'Capacidad' sean números enteros válidos.", "Error de Formato", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            catch (InvalidOperationException ex)
+            {
+                MessageBox.Show(ex.Message, "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al guardar: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

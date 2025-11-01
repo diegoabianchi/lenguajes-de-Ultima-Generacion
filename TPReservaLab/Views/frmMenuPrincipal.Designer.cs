@@ -50,7 +50,7 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { gestiónDeReservasToolStripMenuItem, gestiónDeLaboratoriosToolStripMenuItem, generaciónDeReportesToolStripMenuItem, integrantesToolStripMenuItem, salirToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(1115, 24);
+            menuStrip1.Size = new Size(699, 24);
             menuStrip1.TabIndex = 1;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -91,21 +91,22 @@
             // 
             // panelContenedor
             // 
-            panelContenedor.Location = new Point(0, 27);
+            panelContenedor.Location = new Point(12, 27);
             panelContenedor.Name = "panelContenedor";
-            panelContenedor.Size = new Size(1099, 424);
+            panelContenedor.Size = new Size(662, 424);
             panelContenedor.TabIndex = 2;
             // 
             // frmMenuPrincipal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1115, 461);
+            ClientSize = new Size(699, 471);
             Controls.Add(panelContenedor);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
             Name = "frmMenuPrincipal";
-            Text = "frmMenuPrincipal";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Gestión de Reservas de Laboratorios";
             Load += frmMenuPrincipal_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();

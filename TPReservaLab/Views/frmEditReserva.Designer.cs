@@ -53,6 +53,8 @@
             label10 = new Label();
             txtCantSemanas = new TextBox();
             btnGuardar = new Button();
+            txtObservaciones = new TextBox();
+            label11 = new Label();
             gbCuatrimestral.SuspendLayout();
             gbEventual.SuspendLayout();
             SuspendLayout();
@@ -60,7 +62,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(51, 43);
+            label3.Location = new Point(59, 117);
             label3.Name = "label3";
             label3.Size = new Size(68, 15);
             label3.TabIndex = 5;
@@ -69,7 +71,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(64, 120);
+            label2.Location = new Point(72, 83);
             label2.Name = "label2";
             label2.Size = new Size(55, 15);
             label2.TabIndex = 4;
@@ -78,7 +80,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(49, 83);
+            label1.Location = new Point(57, 46);
             label1.Name = "label1";
             label1.Size = new Size(70, 15);
             label1.TabIndex = 3;
@@ -87,7 +89,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(372, 83);
+            label4.Location = new Point(421, 80);
             label4.Name = "label4";
             label4.Size = new Size(64, 15);
             label4.TabIndex = 8;
@@ -96,7 +98,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(385, 43);
+            label5.Location = new Point(434, 40);
             label5.Name = "label5";
             label5.Size = new Size(51, 15);
             label5.TabIndex = 7;
@@ -105,7 +107,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(29, 157);
+            label6.Location = new Point(38, 154);
             label6.Name = "label6";
             label6.Size = new Size(90, 15);
             label6.TabIndex = 6;
@@ -114,7 +116,7 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(391, 157);
+            label8.Location = new Point(440, 154);
             label8.Name = "label8";
             label8.Size = new Size(45, 15);
             label8.TabIndex = 10;
@@ -123,7 +125,7 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(378, 120);
+            label9.Location = new Point(427, 117);
             label9.Name = "label9";
             label9.Size = new Size(58, 15);
             label9.TabIndex = 9;
@@ -132,37 +134,41 @@
             // cbxLaboratorio
             // 
             cbxLaboratorio.FormattingEnabled = true;
-            cbxLaboratorio.Location = new Point(125, 40);
+            cbxLaboratorio.Location = new Point(133, 114);
             cbxLaboratorio.Name = "cbxLaboratorio";
             cbxLaboratorio.Size = new Size(200, 23);
             cbxLaboratorio.TabIndex = 11;
             // 
             // dtpFechaInicio
             // 
-            dtpFechaInicio.Location = new Point(125, 77);
+            dtpFechaInicio.CustomFormat = "ddd, d MMMM yyyy HH:mm";
+            dtpFechaInicio.Format = DateTimePickerFormat.Custom;
+            dtpFechaInicio.Location = new Point(133, 40);
             dtpFechaInicio.Name = "dtpFechaInicio";
-            dtpFechaInicio.Size = new Size(200, 23);
+            dtpFechaInicio.Size = new Size(228, 23);
             dtpFechaInicio.TabIndex = 12;
             // 
             // dtpFechaFin
             // 
-            dtpFechaFin.Location = new Point(125, 114);
+            dtpFechaFin.CustomFormat = "ddd, d MMMM yyyy HH:mm";
+            dtpFechaFin.Format = DateTimePickerFormat.Custom;
+            dtpFechaFin.Location = new Point(133, 77);
             dtpFechaFin.Name = "dtpFechaFin";
-            dtpFechaFin.Size = new Size(200, 23);
+            dtpFechaFin.Size = new Size(228, 23);
             dtpFechaFin.TabIndex = 13;
             // 
             // cbxTipoReserva
             // 
             cbxTipoReserva.FormattingEnabled = true;
-            cbxTipoReserva.Location = new Point(125, 154);
+            cbxTipoReserva.Location = new Point(134, 151);
             cbxTipoReserva.Name = "cbxTipoReserva";
-            cbxTipoReserva.Size = new Size(147, 23);
+            cbxTipoReserva.Size = new Size(162, 23);
             cbxTipoReserva.TabIndex = 14;
             // 
             // cbxProfesor
             // 
             cbxProfesor.FormattingEnabled = true;
-            cbxProfesor.Location = new Point(442, 40);
+            cbxProfesor.Location = new Point(491, 37);
             cbxProfesor.Name = "cbxProfesor";
             cbxProfesor.Size = new Size(200, 23);
             cbxProfesor.TabIndex = 15;
@@ -170,7 +176,7 @@
             // cbxAsignatura
             // 
             cbxAsignatura.FormattingEnabled = true;
-            cbxAsignatura.Location = new Point(442, 80);
+            cbxAsignatura.Location = new Point(491, 77);
             cbxAsignatura.Name = "cbxAsignatura";
             cbxAsignatura.Size = new Size(200, 23);
             cbxAsignatura.TabIndex = 16;
@@ -178,7 +184,7 @@
             // cbxComision
             // 
             cbxComision.FormattingEnabled = true;
-            cbxComision.Location = new Point(442, 117);
+            cbxComision.Location = new Point(491, 114);
             cbxComision.Name = "cbxComision";
             cbxComision.Size = new Size(200, 23);
             cbxComision.TabIndex = 17;
@@ -186,7 +192,7 @@
             // cbxCarrera
             // 
             cbxCarrera.FormattingEnabled = true;
-            cbxCarrera.Location = new Point(442, 154);
+            cbxCarrera.Location = new Point(491, 151);
             cbxCarrera.Name = "cbxCarrera";
             cbxCarrera.Size = new Size(200, 23);
             cbxCarrera.TabIndex = 18;
@@ -197,24 +203,27 @@
             gbCuatrimestral.Controls.Add(label7);
             gbCuatrimestral.Controls.Add(rdbQuincenal);
             gbCuatrimestral.Controls.Add(rdbSemanal);
-            gbCuatrimestral.Location = new Point(38, 209);
+            gbCuatrimestral.Location = new Point(48, 201);
             gbCuatrimestral.Name = "gbCuatrimestral";
-            gbCuatrimestral.Size = new Size(320, 122);
+            gbCuatrimestral.Size = new Size(333, 122);
             gbCuatrimestral.TabIndex = 19;
             gbCuatrimestral.TabStop = false;
             gbCuatrimestral.Text = "Cuatrimestral";
+            gbCuatrimestral.Visible = false;
             // 
             // dtpFechaFinCuatri
             // 
-            dtpFechaFinCuatri.Location = new Point(92, 73);
+            dtpFechaFinCuatri.CustomFormat = "ddd, d MMMM yyyy HH:mm";
+            dtpFechaFinCuatri.Format = DateTimePickerFormat.Custom;
+            dtpFechaFinCuatri.Location = new Point(85, 64);
             dtpFechaFinCuatri.Name = "dtpFechaFinCuatri";
-            dtpFechaFinCuatri.Size = new Size(200, 23);
+            dtpFechaFinCuatri.Size = new Size(228, 23);
             dtpFechaFinCuatri.TabIndex = 14;
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(31, 79);
+            label7.Location = new Point(24, 70);
             label7.Name = "label7";
             label7.Size = new Size(55, 15);
             label7.TabIndex = 13;
@@ -223,7 +232,7 @@
             // rdbQuincenal
             // 
             rdbQuincenal.AutoSize = true;
-            rdbQuincenal.Location = new Point(118, 37);
+            rdbQuincenal.Location = new Point(115, 32);
             rdbQuincenal.Name = "rdbQuincenal";
             rdbQuincenal.Size = new Size(79, 19);
             rdbQuincenal.TabIndex = 1;
@@ -234,7 +243,7 @@
             // rdbSemanal
             // 
             rdbSemanal.AutoSize = true;
-            rdbSemanal.Location = new Point(31, 37);
+            rdbSemanal.Location = new Point(28, 32);
             rdbSemanal.Name = "rdbSemanal";
             rdbSemanal.Size = new Size(70, 19);
             rdbSemanal.TabIndex = 0;
@@ -246,17 +255,18 @@
             // 
             gbEventual.Controls.Add(label10);
             gbEventual.Controls.Add(txtCantSemanas);
-            gbEventual.Location = new Point(378, 209);
+            gbEventual.Location = new Point(48, 201);
             gbEventual.Name = "gbEventual";
-            gbEventual.Size = new Size(264, 96);
+            gbEventual.Size = new Size(313, 96);
             gbEventual.TabIndex = 20;
             gbEventual.TabStop = false;
             gbEventual.Text = "Eventual";
+            gbEventual.Visible = false;
             // 
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new Point(19, 42);
+            label10.Location = new Point(15, 38);
             label10.Name = "label10";
             label10.Size = new Size(120, 15);
             label10.TabIndex = 14;
@@ -264,14 +274,14 @@
             // 
             // txtCantSemanas
             // 
-            txtCantSemanas.Location = new Point(145, 39);
+            txtCantSemanas.Location = new Point(141, 35);
             txtCantSemanas.Name = "txtCantSemanas";
             txtCantSemanas.Size = new Size(100, 23);
             txtCantSemanas.TabIndex = 0;
             // 
             // btnGuardar
             // 
-            btnGuardar.Location = new Point(550, 336);
+            btnGuardar.Location = new Point(599, 348);
             btnGuardar.Name = "btnGuardar";
             btnGuardar.Size = new Size(92, 32);
             btnGuardar.TabIndex = 15;
@@ -279,14 +289,33 @@
             btnGuardar.UseVisualStyleBackColor = true;
             btnGuardar.Click += btnGuardar_Click;
             // 
+            // txtObservaciones
+            // 
+            txtObservaciones.Location = new Point(491, 188);
+            txtObservaciones.Multiline = true;
+            txtObservaciones.Name = "txtObservaciones";
+            txtObservaciones.Size = new Size(200, 135);
+            txtObservaciones.TabIndex = 20;
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Location = new Point(401, 240);
+            label11.Name = "label11";
+            label11.Size = new Size(84, 15);
+            label11.TabIndex = 21;
+            label11.Text = "Observaciones";
+            // 
             // frmEditReserva
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 423);
-            Controls.Add(btnGuardar);
+            ClientSize = new Size(743, 424);
+            Controls.Add(label11);
             Controls.Add(gbEventual);
             Controls.Add(gbCuatrimestral);
+            Controls.Add(txtObservaciones);
+            Controls.Add(btnGuardar);
             Controls.Add(cbxCarrera);
             Controls.Add(cbxComision);
             Controls.Add(cbxAsignatura);
@@ -340,5 +369,7 @@
         private Label label10;
         private TextBox txtCantSemanas;
         private Button btnGuardar;
+        private TextBox txtObservaciones;
+        private Label label11;
     }
 }

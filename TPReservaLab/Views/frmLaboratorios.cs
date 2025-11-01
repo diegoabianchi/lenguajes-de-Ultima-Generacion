@@ -1,98 +1,103 @@
-﻿namespace TPReservaLab.Views
+﻿using System.Windows.Forms;
+using Microsoft.Extensions.DependencyInjection;
+
+namespace TPReservaLab.Views
 {
     public partial class frmLaboratorios : Form
     {
+        private readonly LaboratorioController _laboratorioController;
+        private readonly IServiceProvider _serviceProvider;
+        private int _laboratorioIdSeleccionado = 0; // Para rastrear el elemento en Edición/Baja
 
-        public frmLaboratorios()
+
+        public frmLaboratorios(LaboratorioController laboratorioController, IServiceProvider serviceProvider)
         {
             InitializeComponent();
+            _laboratorioController = laboratorioController;
+            _serviceProvider = serviceProvider;
+            CargarLaboratorios();
         }
+        private void CargarLaboratorios()
+        {
+            try
+            {
+                // La Vista usa el Controlador para obtener datos
+                dgvLaboratorios.DataSource = _laboratorioController.ObtenerTodos();
+                dgvLaboratorios.Columns["LaboratorioId"].Visible = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cargar laboratorios: {ex.Message}", "Error de Carga", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private int? GetIdSeleccionado()
+        {
+            try
+            {
+                if (dgvLaboratorios.CurrentRow == null) return null;
+                // Asumiendo que el ID es la primera columna
+                return (int)dgvLaboratorios.Rows[dgvLaboratorios.CurrentRow.Index].Cells["LaboratorioId"].Value;
+            }
+            catch { return null; }
+        }
+        private void dgvLaboratorios_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Para manejar la selección de fila para Edición/Baja
+            if (e.RowIndex >= 0 && dgvLaboratorios.Rows[e.RowIndex].Cells["LaboratorioId"].Value != null)
+            {
+                _laboratorioIdSeleccionado = (int)dgvLaboratorios.Rows[e.RowIndex].Cells["LaboratorioId"].Value;
+                // Opcional: Cargar datos a campos de texto si no usa frmEditLaboratorio
+            }
+        }
+
+
+        // EVENTOS DEL FORMULARIO
         private void frmLaboratorios_Load(object sender, EventArgs e)
         {
-            Refresh();
+            CargarLaboratorios();
         }
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            frmEditLaboratorio frm = new frmEditLaboratorio();
+            var frm = _serviceProvider.GetRequiredService<frmEditLaboratorio>();
             frm.ShowDialog();
-            Refresh();
+            CargarLaboratorios();
         }
-
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            int? id = GetId();
-            if (id != null)
+            int? id = GetIdSeleccionado();
+            if (id.HasValue)
             {
-                frmEditLaboratorio frm = new frmEditLaboratorio(id);
-                frm.ShowDialog();
-                Refresh();
+                // 1. Obtener el formulario de DI (el DI inyecta el Controlador y el Repositorio)
+                var frmEdicion = _serviceProvider.GetRequiredService<frmEditLaboratorio>();
+                frmEdicion.LoadData(id.Value);
+                frmEdicion.ShowDialog();
+                CargarLaboratorios();
             }
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            int? id = GetId();
-            if (id != null)
+            int? id = GetIdSeleccionado();
+            if (id.HasValue && MessageBox.Show("¿Seguro de eliminar?", "Confirmar", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                if (MessageBox.Show("¿Está seguro de eliminar el Laboratorio seleccionado?", "Confirmar Baja", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
+                try
                 {
-                    return; // Cancela la operación
+                    // El formulario llama al Controlador (Lógica de Negocio)
+                    _laboratorioController.EliminarLaboratorio(id.Value);
+                    MessageBox.Show("Laboratorio eliminado con éxito.", "Baja Exitosa");
+                    CargarLaboratorios();
                 }
-
-                using (var context = new ReservaLabContext())
+                catch (InvalidOperationException ex)
                 {
-                    // LÓGICA DE NEGOCIO: VALIDAR RESERVAS ACTIVAS (REQUISITO DEL ENUNCIADO)
-                    bool hasActiveReservations = context.Reservas.Any(r => r.LaboratorioId == id && r.IsActive);
-
-                    if (hasActiveReservations)
-                    {
-                        MessageBox.Show("No se puede eliminar este laboratorio porque tiene reservas activas asignadas.", "Error de Negocio", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return; // Detiene la eliminación
-                    }
-
-                    // Si no hay reservas activas, procede con la eliminación
-                    var lab = context.Laboratorios.Find(id);
-                    if (lab != null)
-                    {
-                        context.Laboratorios.Remove(lab);
-                        context.SaveChanges();
-                        MessageBox.Show("Laboratorio eliminado con éxito.", "Baja Exitosa");
-                    }
+                    // Captura la regla de negocio: "Tiene reservas activas"
+                    MessageBox.Show(ex.Message, "Advertencia de Negocio", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-                Refresh();
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error al eliminar: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
-
-
-        #region HELPER
-        private void Refresh()
-        {
-            using (var context = new ReservaLabContext())
-            {
-                var lst = context.Laboratorios.ToList();
-                dataGridLaboratorios.DataSource = lst;
-
-                if (dataGridLaboratorios.Columns.Contains("LaboratorioId"))
-                    dataGridLaboratorios.Columns["LaboratorioId"].Visible = false;
-
-            }
-        }
-
-        private int? GetId()
-        {
-            try
-            {
-                if (dataGridLaboratorios.CurrentRow == null) return null;
-
-                return int.Parse(dataGridLaboratorios.Rows[dataGridLaboratorios.CurrentRow.Index].Cells[0].Value.ToString());
-            }
-            catch
-            {
-                MessageBox.Show("Seleccione una fila válida.", "Error de Selección", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return null;
-            }
-        }
-        #endregion
     }
 }

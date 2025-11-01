@@ -67,18 +67,22 @@
             // 
             // dgvReservas
             // 
+            dgvReservas.AllowUserToAddRows = false;
+            dgvReservas.AllowUserToDeleteRows = false;
+            dgvReservas.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dgvReservas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvReservas.Location = new Point(12, 66);
             dgvReservas.Name = "dgvReservas";
+            dgvReservas.ReadOnly = true;
             dgvReservas.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvReservas.Size = new Size(1114, 358);
+            dgvReservas.Size = new Size(997, 358);
             dgvReservas.TabIndex = 4;
             // 
             // frmReservas
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1138, 450);
+            ClientSize = new Size(1037, 450);
             Controls.Add(btnEliminar);
             Controls.Add(btnEditar);
             Controls.Add(btnAgregar);

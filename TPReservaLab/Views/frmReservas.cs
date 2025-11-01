@@ -7,103 +7,146 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace TPReservaLab.Views
 {
     public partial class frmReservas : Form
     {
-        private readonly ReservaRepository _reservaRepository;
-        public frmReservas()
+        private readonly ReservaController _reservaController;
+        private readonly IServiceProvider _serviceProvider;
+
+        public frmReservas(ReservaController reservaController, IServiceProvider serviceProvider)
         {
             InitializeComponent();
-            _reservaRepository = new ReservaRepository();
-            Refresh();
-        }
-
-        private void btnAgregar_Click(object sender, EventArgs e)
-        {
-            frmEditReserva frm = new frmEditReserva();
-            frm.ShowDialog();
-            Refresh();
-        }
-
-        private void btnEditar_Click(object sender, EventArgs e)
-        {
-            int? id = GetId();
-            if (id != null)
-            {
-                frmEditReserva frm = new frmEditReserva(id);
-                frm.ShowDialog();
-                Refresh();
-            }
-        }
-
-        private void btnEliminar_Click(object sender, EventArgs e)
-        {
-            return;
+            _reservaController = reservaController;
+            _serviceProvider = serviceProvider;
         }
 
         private void frmReservas_Load(object sender, EventArgs e)
         {
-            Refresh();
+            CargarReservas(); // Carga inicial
+            AjustarVisualizacion();
         }
 
-        #region HELPER
-        private void Refresh()
+        private void CargarReservas()
         {
-            dgvReservas.DataSource = _reservaRepository.GetAllReservasVista();
+            try
+            {
+                dgvReservas.DataSource = _reservaController.ObtenerTodasReservasVista().ToList();
 
+                if (dgvReservas.Columns.Contains("ReservaId"))
+                {
+                    dgvReservas.Columns["ReservaId"].Visible = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cargar reservas: {ex.Message}");
+            }
+        }
+        private int? GetIdSeleccionado()
+        {
+            if (dgvReservas.CurrentRow != null)
+            {
+                return (int)dgvReservas.CurrentRow.Cells["ReservaId"].Value;
+            }
+            return null;
+        }
+
+        // EVENTOS DEL FORMULARIO
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            var frm = _serviceProvider.GetRequiredService<frmEditReserva>();
+            frm.ShowDialog();
+            CargarReservas();
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            int? id = GetIdSeleccionado();
+            if (id.HasValue)
+            {
+                var frm = _serviceProvider.GetRequiredService<frmEditReserva>();
+                frm.LoadData(id.Value);
+                frm.ShowDialog();
+                CargarReservas();
+            }
+        }
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            int? id = GetIdSeleccionado();
+            if (id.HasValue && MessageBox.Show("¿Seguro de eliminar la reserva?", "Confirmar", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                try
+                {
+                    _reservaController.BajaReserva(id.Value);
+                    MessageBox.Show("Reserva eliminada con éxito.", "Baja Exitosa");
+                    CargarReservas();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error al eliminar: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+
+
+        private void AjustarVisualizacion()
+        {
+            if (dgvReservas.Columns.Count == 0) 
+                return;
+
+            dgvReservas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
+
+            // Ancho total mínimo (aproximadamente 1200px)
+            dgvReservas.Columns["TipoReserva"].Width = 90;
+            dgvReservas.Columns["Frecuencia"].Width = 80;
+            dgvReservas.Columns["CantidadSemanas"].Width = 60;
+            dgvReservas.Columns["Laboratorio"].Width = 80;
+            dgvReservas.Columns["Profesor"].Width = 150;
+            dgvReservas.Columns["Asignatura"].Width = 150;
+            dgvReservas.Columns["Carrera"].Width = 150;
+            dgvReservas.Columns["Comision"].Width = 100;
+            dgvReservas.Columns["Inicio"].Width = 100;
+            dgvReservas.Columns["Fin"].Width = 100;
+            dgvReservas.Columns["Observaciones"].Width = 150;
+            dgvReservas.Columns["Activa"].Width = 60;
+
+            // Ocultar ID
             if (dgvReservas.Columns.Contains("ReservaId"))
             {
                 dgvReservas.Columns["ReservaId"].Visible = false;
             }
-            AjustarVisualizacion();
-        }
 
-        private void AjustarVisualizacion()
-        {
-            // Si no hay columnas, salir
-            if (dgvReservas.Columns.Count == 0) return;
-
-            // --- 1. CONFIGURACIÓN DE ORDEN Y TÍTULOS ---
-            dgvReservas.AutoGenerateColumns = true;
-
-            // Definir el orden de las columnas por índice (ej: 0, 1, 2, ...)
-            dgvReservas.Columns["TipoReserva"].DisplayIndex = 0;
-            dgvReservas.Columns["Laboratorio"].DisplayIndex = 1;
-            dgvReservas.Columns["Profesor"].DisplayIndex = 2;
-            dgvReservas.Columns["Inicio"].DisplayIndex = 3;
-            dgvReservas.Columns["Fin"].DisplayIndex = 4;
-
-            // Mejorar los títulos
-            dgvReservas.Columns["TipoReserva"].HeaderText = "Tipo";
-            dgvReservas.Columns["Laboratorio"].HeaderText = "Lab Nro.";
-            dgvReservas.Columns["Inicio"].HeaderText = "Inicio (Fecha y Hora)";
-
-            // --- 2. FORMATO DE FECHA/HORA ---
-            // Muestra la fecha y hora completa en formato local
-            dgvReservas.Columns["Inicio"].DefaultCellStyle.Format = "dd/MM/yyyy HH:mm";
-            dgvReservas.Columns["Fin"].DefaultCellStyle.Format = "dd/MM/yyyy HH:mm";
-
-            // Opcional: Ajustar el ancho
-            dgvReservas.Columns["Inicio"].Width = 150;
-        }
-        private int? GetId()
-        {
+            // --- Definir Orden y Títulos (DisplayIndex) ---
             try
             {
-                if (dgvReservas.CurrentRow == null) return null;
+                dgvReservas.Columns["TipoReserva"].DisplayIndex = 0;
+                dgvReservas.Columns["Frecuencia"].DisplayIndex = 1;
+                dgvReservas.Columns["CantidadSemanas"].DisplayIndex = 2;
+                dgvReservas.Columns["Laboratorio"].DisplayIndex = 3;
+                dgvReservas.Columns["Profesor"].DisplayIndex = 4;
+                dgvReservas.Columns["Asignatura"].DisplayIndex = 5;
+                dgvReservas.Columns["Carrera"].DisplayIndex = 6;
+                dgvReservas.Columns["Comision"].DisplayIndex = 7;
+                dgvReservas.Columns["Inicio"].DisplayIndex = 8;
+                dgvReservas.Columns["Fin"].DisplayIndex = 9;
+                dgvReservas.Columns["Observaciones"].DisplayIndex = 10;
+                dgvReservas.Columns["Activa"].DisplayIndex = 11;
 
-                return int.Parse(dgvReservas.Rows[dgvReservas.CurrentRow.Index].Cells[0].Value.ToString());
+                dgvReservas.Columns["TipoReserva"].HeaderText = "Tipo";
+                dgvReservas.Columns["Laboratorio"].HeaderText = "Lab Nro.";
+                dgvReservas.Columns["CantidadSemanas"].HeaderText = "Semanas";
+                dgvReservas.Columns["Inicio"].DefaultCellStyle.Format = "dd/MM/yyyy HH:mm";
+                dgvReservas.Columns["Fin"].DefaultCellStyle.Format = "dd/MM/yyyy HH:mm";
+
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBox.Show("Seleccione una fila válida.", "Error de Selección", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return null;
+                Console.WriteLine($"Error al configurar columna: {ex.Message}");
             }
         }
-        #endregion
-
-
     }
 }

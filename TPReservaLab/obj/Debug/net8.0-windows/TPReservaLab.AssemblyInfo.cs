@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TPReservaLab")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4df71c06d523dac2b531fb633f1ad2c99491a386")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+aa5f030aac01ae8525377ea8c3bc0aecfa542dec")]
 [assembly: System.Reflection.AssemblyProductAttribute("TPReservaLab")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TPReservaLab")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

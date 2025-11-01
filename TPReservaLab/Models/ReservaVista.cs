@@ -14,8 +14,10 @@
     public string Asignatura { get; set; }
     public string Carrera { get; set; }
     public string Comision { get; set; }
-
-    // Datos adicionales
     public string Observaciones { get; set; }
     public bool Activa { get; set; }
+
+    // CAMPOS PARA LA HERENCIA
+    public string Frecuencia { get; set; }
+    public int? CantidadSemanas { get; set; } 
 }
