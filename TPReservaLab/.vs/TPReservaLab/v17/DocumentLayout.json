@@ -7,7 +7,7 @@
       "RelativeMoniker": "D:0:0:{5F56BC87-B063-4181-86C3-8F5B3B8A884D}|TPReservaLab.csproj|solutionrelative:views\\frmreservas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5F56BC87-B063-4181-86C3-8F5B3B8A884D}|TPReservaLab.csproj|c:\\users\\sbi\\source\\repos\\lenguajes-de-ultima-generacion\\tpreservalab\\views\\frmreservas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{5F56BC87-B063-4181-86C3-8F5B3B8A884D}|TPReservaLab.csproj|C:\\Users\\SBI\\source\\repos\\lenguajes-de-ultima-generacion\\TPReservaLab\\views\\frmreservas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{5F56BC87-B063-4181-86C3-8F5B3B8A884D}|TPReservaLab.csproj|solutionrelative:views\\frmreservas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
@@ -15,7 +15,7 @@
       "RelativeMoniker": "D:0:0:{5F56BC87-B063-4181-86C3-8F5B3B8A884D}|TPReservaLab.csproj|solutionrelative:data\\reservalabcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5F56BC87-B063-4181-86C3-8F5B3B8A884D}|TPReservaLab.csproj|c:\\users\\sbi\\source\\repos\\lenguajes-de-ultima-generacion\\tpreservalab\\views\\frmmenuprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{5F56BC87-B063-4181-86C3-8F5B3B8A884D}|TPReservaLab.csproj|C:\\Users\\SBI\\source\\repos\\lenguajes-de-ultima-generacion\\TPReservaLab\\views\\frmmenuprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{5F56BC87-B063-4181-86C3-8F5B3B8A884D}|TPReservaLab.csproj|solutionrelative:views\\frmmenuprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
@@ -34,12 +34,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
-            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -55,18 +51,6 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "frmReservas.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\SBI\\source\\repos\\lenguajes-de-ultima-generacion\\TPReservaLab\\Views\\frmReservas.cs",
-              "RelativeDocumentMoniker": "Views\\frmReservas.cs",
-              "ToolTip": "C:\\Users\\SBI\\source\\repos\\lenguajes-de-ultima-generacion\\TPReservaLab\\Views\\frmReservas.cs [Dise\u00F1o]",
-              "RelativeToolTip": "Views\\frmReservas.cs [Dise\u00F1o]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-31T23:51:43.174Z",
-              "EditorCaption": " [Dise\u00F1o]"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 5,
               "Title": "ReservaRepository.cs",
               "DocumentMoniker": "C:\\Users\\SBI\\source\\repos\\lenguajes-de-ultima-generacion\\TPReservaLab\\Repositories\\ReservaRepository.cs",
@@ -75,8 +59,7 @@
               "RelativeToolTip": "Repositories\\ReservaRepository.cs",
               "ViewState": "AgIAAHAAAAAAAAAAAAAUwJkAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-31T23:45:22.572Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-31T23:45:22.572Z"
             },
             {
               "$type": "Document",
@@ -88,8 +71,7 @@
               "RelativeToolTip": "Data\\ReservaLabContext.cs",
               "ViewState": "AgIAACAAAAAAAAAAAADwvwcAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-31T23:43:34.79Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-31T23:43:34.79Z"
             },
             {
               "$type": "Document",
@@ -105,6 +87,25 @@
               "EditorCaption": ""
             },
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "frmReservas.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\SBI\\source\\repos\\lenguajes-de-ultima-generacion\\TPReservaLab\\Views\\frmReservas.cs",
+              "RelativeDocumentMoniker": "Views\\frmReservas.cs",
+              "ToolTip": "C:\\Users\\SBI\\source\\repos\\lenguajes-de-ultima-generacion\\TPReservaLab\\Views\\frmReservas.cs [Dise\u00F1o]",
+              "RelativeToolTip": "Views\\frmReservas.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-31T23:51:43.174Z"
+            },
+            {
               "$type": "Document",
               "DocumentIndex": 3,
               "Title": "frmMenuPrincipal.cs [Dise\u00F1o]",
@@ -113,8 +114,7 @@
               "ToolTip": "C:\\Users\\SBI\\source\\repos\\lenguajes-de-ultima-generacion\\TPReservaLab\\Views\\frmMenuPrincipal.cs [Dise\u00F1o]",
               "RelativeToolTip": "Views\\frmMenuPrincipal.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-31T23:39:21.86Z",
-              "EditorCaption": " [Dise\u00F1o]"
+              "WhenOpened": "2025-10-31T23:39:21.86Z"
             }
           ]
         }
