@@ -42,6 +42,7 @@
             dgvProductos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvProductos.Location = new Point(12, 65);
             dgvProductos.Name = "dgvProductos";
+            dgvProductos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvProductos.Size = new Size(699, 386);
             dgvProductos.TabIndex = 0;
             // 

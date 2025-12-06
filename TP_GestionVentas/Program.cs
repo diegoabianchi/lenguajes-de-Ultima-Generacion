@@ -31,14 +31,18 @@ namespace TP_GestionVentas
                     // B. Registrar Repositorios
                     services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
                     services.AddScoped<IProductoRepository, ProductoRepository>();
+                    services.AddScoped<IClienteRepository, ClienteRepository>();
 
                     // C. Registrar Controladores
                     services.AddTransient<ProductoController>();
+                    services.AddTransient<ClienteController>();
 
                     // D. Registrar Formularios (Vistas)
                     services.AddTransient<frmMenuPrincipal>();
                     services.AddTransient<frmGestionProductos>();
                     services.AddTransient<frmEditProducto>();
+                    services.AddTransient<frmGestionClientes>();
+                    services.AddTransient<frmEditCliente>();
 
 
                 })

@@ -42,30 +42,23 @@ namespace TP_GestionVentas.Views
         // ================================================
         // EVENTOS DEL MENÚ
         // ================================================
-
-        // 1. GESTIÓN DE PRODUCTOS
         private void mnuProductos_Click(object sender, EventArgs e)
         {
             var frm = _serviceProvider.GetRequiredService<frmGestionProductos>();
             AbrirFormEnPanel(frm);
         }
 
-        // 2. GESTIÓN DE CLIENTES (Aún no creado, dejo el placeholder)
         private void mnuClientes_Click(object sender, EventArgs e)
         {
-            // Cuando creemos frmGestionClientes, descomentamos esto:
-            // var frm = _serviceProvider.GetRequiredService<frmGestionClientes>();
-            // AbrirFormEnPanel(frm);
-            MessageBox.Show("Módulo de Clientes en construcción.");
+            var frm = _serviceProvider.GetRequiredService<frmGestionClientes>();
+            AbrirFormEnPanel(frm);
         }
 
-        // 3. NUEVA VENTA (Aún no creado)
         private void mnuNuevaVenta_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Módulo de Ventas en construcción.");
         }
 
-        // 4. SALIR
         private void mnuSalir_Click(object sender, EventArgs e)
         {
             Application.Exit();

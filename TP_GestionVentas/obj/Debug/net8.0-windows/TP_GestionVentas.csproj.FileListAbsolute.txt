@@ -144,3 +144,5 @@ C:\Users\SBI\source\repos\lenguajes-de-ultima-generacion\TP_GestionVentas\obj\De
 C:\Users\SBI\source\repos\lenguajes-de-ultima-generacion\TP_GestionVentas\obj\Debug\net8.0-windows\TP_GestionVentas.genruntimeconfig.cache
 C:\Users\SBI\source\repos\lenguajes-de-ultima-generacion\TP_GestionVentas\obj\Debug\net8.0-windows\ref\TP_GestionVentas.dll
 C:\Users\SBI\source\repos\lenguajes-de-ultima-generacion\TP_GestionVentas\obj\Debug\net8.0-windows\TP_GestionVentas.Views.frmEditProducto.resources
+C:\Users\SBI\source\repos\lenguajes-de-ultima-generacion\TP_GestionVentas\obj\Debug\net8.0-windows\TP_GestionVentas.Views.frmEditCliente.resources
+C:\Users\SBI\source\repos\lenguajes-de-ultima-generacion\TP_GestionVentas\obj\Debug\net8.0-windows\TP_GestionVentas.Views.frmGestionClientes.resources
