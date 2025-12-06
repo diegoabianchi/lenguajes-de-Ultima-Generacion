@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TP_GestionVentas.Data;
 using TP_GestionVentas.Models;
+using TP_GestionVentas.Models.DTOs;
 
 namespace TP_GestionVentas.Repositories
 {
@@ -48,6 +49,41 @@ namespace TP_GestionVentas.Repositories
                 .FirstOrDefault(s => s.ProductoId == productoId && s.SucursalId == sucursalId);
 
             return stock != null ? stock.Cantidad : 0;
+        }
+
+        public IEnumerable<StockDTO> GetStockDetallado(int? sucursalId, string busqueda)
+        {
+            // Empezamos consultando la tabla de Stocks
+            var query = _context.Stocks
+                .Include(s => s.Producto)
+                .ThenInclude(p => p.Categoria)
+                .Include(s => s.Sucursal)
+                .AsQueryable();
+
+            // Filtro 1: Por Sucursal (si viene null o 0, trae de todas)
+            if (sucursalId.HasValue && sucursalId.Value > 0)
+            {
+                query = query.Where(s => s.SucursalId == sucursalId.Value);
+            }
+
+            // Filtro 2: Por Nombre o Código de producto
+            if (!string.IsNullOrEmpty(busqueda))
+            {
+                query = query.Where(s => s.Producto.Nombre.Contains(busqueda) || s.Producto.Codigo.Contains(busqueda));
+            }
+
+            // Proyección a DTO (Select)
+            return query.Select(s => new StockDTO
+            {
+                Codigo = s.Producto.Codigo,
+                Producto = s.Producto.Nombre,
+                Categoria = s.Producto.Categoria.Nombre,
+                Sucursal = s.Sucursal.Nombre,
+                Cantidad = s.Cantidad
+            })
+            .OrderBy(x => x.Sucursal)
+            .ThenBy(x => x.Producto)
+            .ToList();
         }
     }
 }

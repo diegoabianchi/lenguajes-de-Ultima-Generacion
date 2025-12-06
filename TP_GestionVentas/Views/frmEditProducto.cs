@@ -15,6 +15,11 @@ namespace TP_GestionVentas.Views
         {
             InitializeComponent();
             _controller = controller;
+
+            // Para el numericUpDown de precio
+            numPrecio.Maximum = 99999999;
+            numPrecio.Minimum = 0;
+            numPrecio.DecimalPlaces = 2;
         }
 
         // Método para inicializar el formulario (Alta o Edición)

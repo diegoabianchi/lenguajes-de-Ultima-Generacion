@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "QQia015iwi8=",
+  "dgSpecHash": "VAwyPxwtwlM=",
   "success": true,
   "projectFilePath": "C:\\Users\\SBI\\source\\repos\\lenguajes-de-ultima-generacion\\TP_GestionVentas\\TP_GestionVentas.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\SBI\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\SBI\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",
+    "C:\\Users\\SBI\\.nuget\\packages\\fontawesome.sharp\\6.6.0\\fontawesome.sharp.6.6.0.nupkg.sha512",
     "C:\\Users\\SBI\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\SBI\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\6.0.0\\microsoft.bcl.asyncinterfaces.6.0.0.nupkg.sha512",
     "C:\\Users\\SBI\\.nuget\\packages\\microsoft.codeanalysis.analyzers\\3.3.3\\microsoft.codeanalysis.analyzers.3.3.3.nupkg.sha512",

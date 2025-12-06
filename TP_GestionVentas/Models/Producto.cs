@@ -32,5 +32,10 @@ namespace TP_GestionVentas.Models
         // Relaciones
         public virtual ICollection<Stock> Stocks { get; set; } = new List<Stock>();
         public virtual ICollection<DetalleVenta> DetallesVenta { get; set; } = new List<DetalleVenta>();
+
+        public override string ToString()
+        {
+            return Nombre;
+        }
     }
 }

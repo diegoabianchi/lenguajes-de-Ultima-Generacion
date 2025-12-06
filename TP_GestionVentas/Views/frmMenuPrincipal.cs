@@ -47,21 +47,38 @@ namespace TP_GestionVentas.Views
             var frm = _serviceProvider.GetRequiredService<frmGestionProductos>();
             AbrirFormEnPanel(frm);
         }
-
         private void mnuClientes_Click(object sender, EventArgs e)
         {
             var frm = _serviceProvider.GetRequiredService<frmGestionClientes>();
             AbrirFormEnPanel(frm);
         }
+        private void mnuVendedores_Click(object sender, EventArgs e)
+        {
+            var frm = _serviceProvider.GetRequiredService<frmGestionVendedores>();
+            AbrirFormEnPanel(frm);
+        }
 
         private void mnuNuevaVenta_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Módulo de Ventas en construcción.");
+            var frm = _serviceProvider.GetRequiredService<frmRegistrarVenta>();
+            AbrirFormEnPanel(frm);
         }
 
         private void mnuSalir_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
+
+        private void mnuAcercaDe_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Sistema desarrollado por Diego Bianchi.\n'Lenguajes de Ultima Generación' - UAI");
+        }
+
+        private void mnuStock_Click(object sender, EventArgs e)
+        {
+            var frm = _serviceProvider.GetRequiredService<frmConsultaStock>();
+            AbrirFormEnPanel(frm);
+        }
+
     }
 }

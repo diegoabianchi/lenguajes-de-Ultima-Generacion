@@ -14,5 +14,6 @@ namespace TP_GestionVentas.Repositories
         // Consultas de Stock (Requerimiento funcional)
         int GetStockTotal(int productoId);
         int GetStockPorSucursal(int productoId, int sucursalId);
+        IEnumerable<TP_GestionVentas.Models.DTOs.StockDTO> GetStockDetallado(int? sucursalId, string busqueda);
     }
 }

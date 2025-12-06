@@ -10,12 +10,16 @@ namespace TP_GestionVentas.Controllers
     {
         private readonly IProductoRepository _productoRepository;
         private readonly IRepository<Categoria> _categoriaRepository;
+        private readonly IRepository<Sucursal> _sucursalRepository;
 
         // Constructor con Inyección de Dependencias
-        public ProductoController(IProductoRepository productoRepository, IRepository<Categoria> categoriaRepository)
+        public ProductoController(IProductoRepository productoRepository, 
+                                  IRepository<Categoria> categoriaRepository,
+                                  IRepository<Sucursal> sucursalRepository)
         {
             _productoRepository = productoRepository;
             _categoriaRepository = categoriaRepository;
+            _sucursalRepository = sucursalRepository;
         }
 
         // ==========================================
@@ -111,5 +115,15 @@ namespace TP_GestionVentas.Controllers
             if (p.CategoriaId <= 0)
                 throw new Exception("Debe seleccionar una categoría válida.");
         }
+
+        public List<Sucursal> ObtenerSucursales()
+        {
+            return _sucursalRepository.GetAll().ToList();
+        }
+        public List<TP_GestionVentas.Models.DTOs.StockDTO> ConsultarDisponibilidad(int? sucursalId, string busqueda)
+        {
+            return _productoRepository.GetStockDetallado(sucursalId, busqueda).ToList();
+        }
+
     }
 }
