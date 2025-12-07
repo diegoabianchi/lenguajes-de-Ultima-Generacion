@@ -54,5 +54,11 @@ namespace TP_GestionVentas.Controllers
         {
             return _ventaRepo.GetVentaConDetalles(ventaId);
         }
+
+        // Método para obtener datos de un cliente específico (y saber si es Mayorista)
+        public Cliente? ObtenerDatosCliente(int clienteId)
+        {
+            return ObtenerClientes().FirstOrDefault(c => c.ClienteId == clienteId);
+        }
     }
 }

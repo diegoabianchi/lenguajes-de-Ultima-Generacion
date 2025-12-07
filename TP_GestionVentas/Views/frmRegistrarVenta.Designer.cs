@@ -49,6 +49,7 @@
             dgvDetalles = new DataGridView();
             lblTotal = new Label();
             btnFinalizar = new Button();
+            lblDescuento = new Label();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvBusquedaProductos).BeginInit();
@@ -110,6 +111,7 @@
             cbxCliente.Name = "cbxCliente";
             cbxCliente.Size = new Size(184, 23);
             cbxCliente.TabIndex = 33;
+            cbxCliente.SelectedIndexChanged += cbxCliente_SelectedIndexChanged;
             // 
             // cbxVendedor
             // 
@@ -258,7 +260,7 @@
             // 
             lblTotal.AutoSize = true;
             lblTotal.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblTotal.Location = new Point(126, 498);
+            lblTotal.Location = new Point(514, 488);
             lblTotal.Name = "lblTotal";
             lblTotal.Size = new Size(119, 25);
             lblTotal.TabIndex = 39;
@@ -267,7 +269,7 @@
             // btnFinalizar
             // 
             btnFinalizar.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnFinalizar.Location = new Point(514, 487);
+            btnFinalizar.Location = new Point(514, 541);
             btnFinalizar.Name = "btnFinalizar";
             btnFinalizar.Size = new Size(181, 48);
             btnFinalizar.TabIndex = 44;
@@ -275,11 +277,23 @@
             btnFinalizar.UseVisualStyleBackColor = true;
             btnFinalizar.Click += btnFinalizar_Click;
             // 
+            // lblDescuento
+            // 
+            lblDescuento.AutoSize = true;
+            lblDescuento.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblDescuento.ForeColor = Color.ForestGreen;
+            lblDescuento.Location = new Point(126, 492);
+            lblDescuento.Name = "lblDescuento";
+            lblDescuento.Size = new Size(173, 20);
+            lblDescuento.TabIndex = 45;
+            lblDescuento.Text = "Descuento: (0%) $ 0.00";
+            // 
             // frmRegistrarVenta
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(888, 625);
+            ClientSize = new Size(839, 663);
+            Controls.Add(lblDescuento);
             Controls.Add(btnFinalizar);
             Controls.Add(lblTotal);
             Controls.Add(dgvDetalles);
@@ -322,5 +336,6 @@
         private Button btnFinalizar;
         private DataGridView dgvBusquedaProductos;
         private Label label2;
+        private Label lblDescuento;
     }
 }

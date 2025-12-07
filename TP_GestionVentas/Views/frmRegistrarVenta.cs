@@ -13,6 +13,7 @@ namespace TP_GestionVentas.Views
         private readonly VentaController _controller;
         private List<DetalleVenta> _carrito;
         private Producto? _productoSeleccionado;
+        private decimal _porcentajeDescuento = 0;
 
         public frmRegistrarVenta(VentaController controller)
         {
@@ -209,7 +210,7 @@ namespace TP_GestionVentas.Views
         {
             dgvDetalles.DataSource = null;
             dgvDetalles.DataSource = _carrito;
-            lblTotal.Text = $"Total: {_carrito.Sum(x => x.Subtotal).ToString("C")}";
+            ActualizarTotal();
         }
 
         private void LimpiarPanelProducto()
@@ -231,6 +232,8 @@ namespace TP_GestionVentas.Views
 
             try
             {
+                decimal subtotal = _carrito.Sum(x => x.Subtotal);
+                decimal descuento = subtotal * _porcentajeDescuento;
                 var venta = new Venta
                 {
                     FechaVenta = DateTime.Now,
@@ -238,7 +241,8 @@ namespace TP_GestionVentas.Views
                     VendedorId = (int)cbxVendedor.SelectedValue,
                     MetodoPagoId = (int)cbxMetodoPago.SelectedValue,
                     ClienteId = cbxCliente.SelectedIndex != -1 ? (int?)cbxCliente.SelectedValue : null,
-                    TotalFinal = _carrito.Sum(x => x.Subtotal),
+                    DescuentoTotal = descuento,
+                    TotalFinal = subtotal - descuento,
                     Detalles = _carrito
                 };
 
@@ -270,6 +274,59 @@ namespace TP_GestionVentas.Views
                 _carrito.Remove(detalleAEliminar);
 
                 RefrescarGrillaCarrito();
+            }
+        }
+
+        private void cbxCliente_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (cbxCliente.SelectedValue != null && (int)cbxCliente.SelectedValue > 0)
+                {
+                    int clienteId = (int)cbxCliente.SelectedValue;
+                    var cliente = _controller.ObtenerDatosCliente(clienteId);
+
+                    if (cliente != null && cliente.TipoCliente == "Mayorista")
+                    {
+                        _porcentajeDescuento = 0.10m; // 10% de Descuento
+                        lblDescuento.Text = "Descuento Mayorista: 10%";
+                        lblDescuento.Visible = true;
+                    }
+                    else
+                    {
+                        _porcentajeDescuento = 0;
+                        lblDescuento.Text = "";
+                        lblDescuento.Visible = false;
+                    }
+                }
+
+                // Recalcular el total con el nuevo descuento
+                ActualizarTotal();
+            }
+            catch {  }
+        }
+
+        private void ActualizarTotal()
+        {
+            // 1. Suma bruta de los productos
+            decimal subtotal = _carrito.Sum(x => x.Subtotal);
+
+            // 2. Calcular monto a descontar
+            decimal montoDescuento = subtotal * _porcentajeDescuento;
+
+            // 3. Total Final
+            decimal totalFinal = subtotal - montoDescuento;
+
+            // 4. Mostrar en pantalla
+            if (_porcentajeDescuento > 0)
+            {
+                lblDescuento.Text = $"Descuento ({_porcentajeDescuento * 100}%): -{montoDescuento.ToString("C")}";
+                lblTotal.Text = $"Total: {totalFinal.ToString("C")}";
+            }
+            else
+            {
+                lblDescuento.Text = "";
+                lblTotal.Text = $"Total: {subtotal.ToString("C")}";
             }
         }
     }
