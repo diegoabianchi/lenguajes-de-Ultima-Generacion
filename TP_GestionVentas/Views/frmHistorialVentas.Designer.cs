@@ -120,20 +120,26 @@
             // 
             // dgvVentas
             // 
+            dgvVentas.AllowUserToResizeRows = false;
             dgvVentas.BackgroundColor = SystemColors.ScrollBar;
             dgvVentas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvVentas.Location = new Point(0, 78);
+            dgvVentas.MultiSelect = false;
             dgvVentas.Name = "dgvVentas";
+            dgvVentas.ReadOnly = true;
             dgvVentas.Size = new Size(800, 201);
             dgvVentas.TabIndex = 2;
             dgvVentas.SelectionChanged += dgvVentas_SelectionChanged;
             // 
             // dgvDetallesVenta
             // 
+            dgvDetallesVenta.AllowUserToResizeRows = false;
             dgvDetallesVenta.BackgroundColor = SystemColors.ScrollBar;
             dgvDetallesVenta.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvDetallesVenta.Location = new Point(0, 321);
+            dgvDetallesVenta.MultiSelect = false;
             dgvDetallesVenta.Name = "dgvDetallesVenta";
+            dgvDetallesVenta.ReadOnly = true;
             dgvDetallesVenta.Size = new Size(800, 170);
             dgvDetallesVenta.TabIndex = 3;
             // 

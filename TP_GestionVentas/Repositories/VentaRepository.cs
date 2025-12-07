@@ -86,6 +86,7 @@ namespace TP_GestionVentas.Repositories
         public Venta? GetVentaConDetalles(int id)
         {
             return _context.Ventas
+                .AsNoTracking() // usamos AsNoTracking para que no vaya a la BD a buscar la data
                 .Include(v => v.Detalles)
                 .ThenInclude(d => d.Producto)
                 .Include(v => v.Cliente)

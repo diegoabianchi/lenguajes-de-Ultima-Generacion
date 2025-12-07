@@ -3,8 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\SBI\\source\\repos\\lenguajes-de-ultima-generacion\\TP_GestionVentas\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{6D5B88B7-2A76-4BC3-A11B-5E06C878383C}|TP_GestionVentas.csproj|c:\\users\\sbi\\source\\repos\\lenguajes-de-ultima-generacion\\tp_gestionventas\\views\\frmgestioncategorias.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{6D5B88B7-2A76-4BC3-A11B-5E06C878383C}|TP_GestionVentas.csproj|solutionrelative:views\\frmgestioncategorias.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{6D5B88B7-2A76-4BC3-A11B-5E06C878383C}|TP_GestionVentas.csproj|c:\\users\\sbi\\source\\repos\\lenguajes-de-ultima-generacion\\tp_gestionventas\\views\\frmhistorialventas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{6D5B88B7-2A76-4BC3-A11B-5E06C878383C}|TP_GestionVentas.csproj|solutionrelative:views\\frmhistorialventas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6D5B88B7-2A76-4BC3-A11B-5E06C878383C}|TP_GestionVentas.csproj|c:\\users\\sbi\\source\\repos\\lenguajes-de-ultima-generacion\\tp_gestionventas\\views\\frmhistorialventas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6D5B88B7-2A76-4BC3-A11B-5E06C878383C}|TP_GestionVentas.csproj|solutionrelative:views\\frmhistorialventas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6D5B88B7-2A76-4BC3-A11B-5E06C878383C}|TP_GestionVentas.csproj|c:\\users\\sbi\\source\\repos\\lenguajes-de-ultima-generacion\\tp_gestionventas\\repositories\\ventarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6D5B88B7-2A76-4BC3-A11B-5E06C878383C}|TP_GestionVentas.csproj|solutionrelative:repositories\\ventarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6D5B88B7-2A76-4BC3-A11B-5E06C878383C}|TP_GestionVentas.csproj|c:\\users\\sbi\\source\\repos\\lenguajes-de-ultima-generacion\\tp_gestionventas\\controllers\\ventacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6D5B88B7-2A76-4BC3-A11B-5E06C878383C}|TP_GestionVentas.csproj|solutionrelative:controllers\\ventacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -22,14 +34,53 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "frmGestionCategorias.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\SBI\\source\\repos\\lenguajes-de-ultima-generacion\\TP_GestionVentas\\Views\\frmGestionCategorias.cs",
-              "RelativeDocumentMoniker": "Views\\frmGestionCategorias.cs",
-              "ToolTip": "C:\\Users\\SBI\\source\\repos\\lenguajes-de-ultima-generacion\\TP_GestionVentas\\Views\\frmGestionCategorias.cs [Dise\u00F1o]",
-              "RelativeToolTip": "Views\\frmGestionCategorias.cs [Dise\u00F1o]",
+              "DocumentIndex": 2,
+              "Title": "VentaRepository.cs",
+              "DocumentMoniker": "C:\\Users\\SBI\\source\\repos\\lenguajes-de-ultima-generacion\\TP_GestionVentas\\Repositories\\VentaRepository.cs",
+              "RelativeDocumentMoniker": "Repositories\\VentaRepository.cs",
+              "ToolTip": "C:\\Users\\SBI\\source\\repos\\lenguajes-de-ultima-generacion\\TP_GestionVentas\\Repositories\\VentaRepository.cs",
+              "RelativeToolTip": "Repositories\\VentaRepository.cs",
+              "ViewState": "AgIAADYAAAAAAAAAAAAmwFgAAABgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-07T21:37:47.241Z",
+              "WhenOpened": "2025-12-07T22:54:58.426Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "VentaController.cs",
+              "DocumentMoniker": "C:\\Users\\SBI\\source\\repos\\lenguajes-de-ultima-generacion\\TP_GestionVentas\\Controllers\\VentaController.cs",
+              "RelativeDocumentMoniker": "Controllers\\VentaController.cs",
+              "ToolTip": "C:\\Users\\SBI\\source\\repos\\lenguajes-de-ultima-generacion\\TP_GestionVentas\\Controllers\\VentaController.cs",
+              "RelativeToolTip": "Controllers\\VentaController.cs",
+              "ViewState": "AgIAACAAAAAAAAAAAAAAwCYAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-07T22:51:33.426Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "frmHistorialVentas.cs",
+              "DocumentMoniker": "C:\\Users\\SBI\\source\\repos\\lenguajes-de-ultima-generacion\\TP_GestionVentas\\Views\\frmHistorialVentas.cs",
+              "RelativeDocumentMoniker": "Views\\frmHistorialVentas.cs",
+              "ToolTip": "C:\\Users\\SBI\\source\\repos\\lenguajes-de-ultima-generacion\\TP_GestionVentas\\Views\\frmHistorialVentas.cs",
+              "RelativeToolTip": "Views\\frmHistorialVentas.cs",
+              "ViewState": "AgIAAFQAAAAAAAAAAAAmwGsAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-07T22:51:16.609Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "frmHistorialVentas.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\SBI\\source\\repos\\lenguajes-de-ultima-generacion\\TP_GestionVentas\\Views\\frmHistorialVentas.cs",
+              "RelativeDocumentMoniker": "Views\\frmHistorialVentas.cs",
+              "ToolTip": "C:\\Users\\SBI\\source\\repos\\lenguajes-de-ultima-generacion\\TP_GestionVentas\\Views\\frmHistorialVentas.cs [Dise\u00F1o]",
+              "RelativeToolTip": "Views\\frmHistorialVentas.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-07T22:51:13.796Z",
               "EditorCaption": " [Dise\u00F1o]"
             }
           ]

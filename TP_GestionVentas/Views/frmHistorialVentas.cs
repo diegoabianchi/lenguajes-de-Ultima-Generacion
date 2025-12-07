@@ -97,12 +97,15 @@ namespace TP_GestionVentas.Views
         // Evento al hacer clic en una venta para ver sus productos
         private void dgvVentas_SelectionChanged(object sender, EventArgs e)
         {
-            if (dgvVentas.CurrentRow == null) return;
+            if (dgvVentas.CurrentRow == null || dgvVentas.CurrentRow.DataBoundItem == null) return;
 
             // Obtenemos el objeto DTO seleccionado
             var ventaSeleccionada = (TP_GestionVentas.Models.DTOs.VentaHistorialDTO)dgvVentas.CurrentRow.DataBoundItem;
 
-            CargarDetalles(ventaSeleccionada.VentaId);
+            if (ventaSeleccionada != null)
+            {
+                CargarDetalles(ventaSeleccionada.VentaId);
+            }
         }
 
         private void CargarDetalles(int ventaId)

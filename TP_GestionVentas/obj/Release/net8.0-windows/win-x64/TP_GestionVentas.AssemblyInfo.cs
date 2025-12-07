@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TP_GestionVentas")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6cc7d3f3fa34cae7a23100bedcab45f70f9c11b1")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c9d85d853b7f1611f9b0d23d3a80bc07a64946cf")]
 [assembly: System.Reflection.AssemblyProductAttribute("TP_GestionVentas")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TP_GestionVentas")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
