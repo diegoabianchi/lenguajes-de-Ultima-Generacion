@@ -66,14 +66,14 @@
             // mnuClientes
             // 
             mnuClientes.Name = "mnuClientes";
-            mnuClientes.Size = new Size(180, 22);
+            mnuClientes.Size = new Size(135, 22);
             mnuClientes.Text = "Clientes";
             mnuClientes.Click += mnuClientes_Click;
             // 
             // mnuVendedores
             // 
             mnuVendedores.Name = "mnuVendedores";
-            mnuVendedores.Size = new Size(180, 22);
+            mnuVendedores.Size = new Size(135, 22);
             mnuVendedores.Text = "Vendedores";
             mnuVendedores.Click += mnuVendedores_Click;
             // 
@@ -81,7 +81,7 @@
             // 
             mnuProductosPadre.DropDownItems.AddRange(new ToolStripItem[] { mnuProductos, mnuStock });
             mnuProductosPadre.Name = "mnuProductosPadre";
-            mnuProductosPadre.Size = new Size(180, 22);
+            mnuProductosPadre.Size = new Size(135, 22);
             mnuProductosPadre.Text = "Productos";
             // 
             // mnuProductos
@@ -117,6 +117,7 @@
             mnuHistorialVentas.Name = "mnuHistorialVentas";
             mnuHistorialVentas.Size = new Size(199, 22);
             mnuHistorialVentas.Text = "Historial de Facturación";
+            mnuHistorialVentas.Click += mnuHistorialVentas_Click;
             // 
             // reportesToolStripMenuItem
             // 
@@ -128,8 +129,9 @@
             // mnuReportes
             // 
             mnuReportes.Name = "mnuReportes";
-            mnuReportes.Size = new Size(164, 22);
+            mnuReportes.Size = new Size(180, 22);
             mnuReportes.Text = "Generar Reportes";
+            mnuReportes.Click += mnuReportes_Click;
             // 
             // sistemaToolStripMenuItem
             // 

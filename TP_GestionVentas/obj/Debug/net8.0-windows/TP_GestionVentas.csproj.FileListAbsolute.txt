@@ -151,3 +151,5 @@ C:\Users\SBI\source\repos\lenguajes-de-ultima-generacion\TP_GestionVentas\obj\De
 C:\Users\SBI\source\repos\lenguajes-de-ultima-generacion\TP_GestionVentas\obj\Debug\net8.0-windows\TP_GestionVentas.Views.frmRegistrarVenta.resources
 C:\Users\SBI\source\repos\lenguajes-de-ultima-generacion\TP_GestionVentas\bin\Debug\net8.0-windows\FontAwesome.Sharp.dll
 C:\Users\SBI\source\repos\lenguajes-de-ultima-generacion\TP_GestionVentas\obj\Debug\net8.0-windows\TP_GestionVentas.Views.frmConsultaStock.resources
+C:\Users\SBI\source\repos\lenguajes-de-ultima-generacion\TP_GestionVentas\obj\Debug\net8.0-windows\TP_GestionVentas.Views.frmReportes.resources
+C:\Users\SBI\source\repos\lenguajes-de-ultima-generacion\TP_GestionVentas\obj\Debug\net8.0-windows\TP_GestionVentas.Views.frmHistorialVentas.resources

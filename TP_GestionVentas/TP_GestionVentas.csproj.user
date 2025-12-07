@@ -22,10 +22,16 @@
     <Compile Update="Views\frmGestionVendedores.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Views\frmHistorialVentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Views\frmMenuPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Views\frmRegistrarVenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Views\frmReportes.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

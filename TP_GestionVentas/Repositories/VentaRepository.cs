@@ -1,9 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using TP_GestionVentas.Data;
 using TP_GestionVentas.Models;
+using TP_GestionVentas.Models.DTOs;
 
 namespace TP_GestionVentas.Repositories
 {
@@ -56,6 +54,44 @@ namespace TP_GestionVentas.Repositories
                 transaction.Rollback();
                 throw; 
             }
+        }
+
+        public IEnumerable<VentaHistorialDTO> GetHistorial(DateTime desde, DateTime hasta, int? clienteId = null)
+        {
+            var query = _context.Ventas
+                .Include(v => v.Cliente)
+                .Include(v => v.Vendedor)
+                .Include(v => v.MetodoPago)
+                .Where(v => v.FechaVenta >= desde && v.FechaVenta <= hasta)
+                .AsQueryable();
+
+            if (clienteId.HasValue)
+            {
+                query = query.Where(v => v.ClienteId == clienteId.Value);
+            }
+
+            return query.Select(v => new VentaHistorialDTO
+            {
+                VentaId = v.VentaId,
+                Fecha = v.FechaVenta,
+                Cliente = v.Cliente != null ? v.Cliente.NombreCompleto : "Consumidor Final",
+                Vendedor = v.Vendedor.NombreCompleto,
+                MetodoPago = v.MetodoPago.Nombre,
+                Total = v.TotalFinal
+            })
+            .OrderByDescending(v => v.Fecha)
+            .ToList();
+        }
+
+        public Venta? GetVentaConDetalles(int id)
+        {
+            return _context.Ventas
+                .Include(v => v.Detalles)
+                .ThenInclude(d => d.Producto)
+                .Include(v => v.Cliente)
+                .Include(v => v.Vendedor)
+                .Include(v => v.Sucursal)
+                .FirstOrDefault(v => v.VentaId == id);
         }
     }
 }

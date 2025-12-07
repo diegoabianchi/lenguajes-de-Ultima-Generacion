@@ -17,7 +17,7 @@ namespace TP_GestionVentas.Views
             // Configuraciones visuales extras
             this.IsMdiContainer = false;
             this.Text = "Sistema de Gestión - TechStore S.A.";
-            //this.WindowState = FormWindowState.Maximized;
+            this.WindowState = FormWindowState.Maximized;
         }
 
         private void AbrirFormEnPanel(Form formHijo)
@@ -80,5 +80,16 @@ namespace TP_GestionVentas.Views
             AbrirFormEnPanel(frm);
         }
 
+        private void mnuReportes_Click(object sender, EventArgs e)
+        {
+            var frm = _serviceProvider.GetRequiredService<frmReportes>();
+            AbrirFormEnPanel(frm);
+        }
+
+        private void mnuHistorialVentas_Click(object sender, EventArgs e)
+        {
+            var frm = _serviceProvider.GetRequiredService<frmHistorialVentas>();
+            AbrirFormEnPanel(frm);
+        }
     }
 }

@@ -34,12 +34,14 @@ namespace TP_GestionVentas
                     services.AddScoped<IClienteRepository, ClienteRepository>();
                     services.AddScoped<IVendedorRepository, VendedorRepository>();
                     services.AddScoped<IVentaRepository, VentaRepository>();
+                    services.AddScoped<IReporteRepository, ReporteRepository>();
 
                     // C. Registrar Controladores
                     services.AddTransient<ProductoController>();
                     services.AddTransient<ClienteController>();
                     services.AddTransient<VendedorController>();
                     services.AddTransient<VentaController>();
+                    services.AddTransient<ReporteController>();
 
                     // D. Registrar Formularios (Vistas)
                     services.AddTransient<frmMenuPrincipal>();
@@ -51,6 +53,8 @@ namespace TP_GestionVentas
                     services.AddTransient<frmEditVendedor>();
                     services.AddTransient<frmRegistrarVenta>();
                     services.AddTransient<frmConsultaStock>();
+                    services.AddTransient<frmReportes>();
+                    services.AddTransient<frmHistorialVentas>();
 
                 })
                 .Build();

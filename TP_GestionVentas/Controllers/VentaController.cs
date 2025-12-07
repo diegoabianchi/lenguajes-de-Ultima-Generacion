@@ -44,5 +44,15 @@ namespace TP_GestionVentas.Controllers
             // Reutilizamos el método Search del repositorio de productos
             return _productoRepo.Search(termino).ToList();
         }
+
+        public List<TP_GestionVentas.Models.DTOs.VentaHistorialDTO> ObtenerHistorial(DateTime desde, DateTime hasta, int? clienteId = null)
+        {
+            return _ventaRepo.GetHistorial(desde, hasta, clienteId).ToList();
+        }
+
+        public Venta? ObtenerDetalleVenta(int ventaId)
+        {
+            return _ventaRepo.GetVentaConDetalles(ventaId);
+        }
     }
 }

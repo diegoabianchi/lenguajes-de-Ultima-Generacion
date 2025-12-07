@@ -11,7 +11,10 @@ namespace TP_GestionVentas.Repositories
         IEnumerable<Sucursal> GetSucursales();
         IEnumerable<Cliente> GetClientes();
 
-        // Guarda Venta + Detalle y Descuenta Stock
         void CrearVentaTransaccional(Venta venta);
+
+        IEnumerable<TP_GestionVentas.Models.DTOs.VentaHistorialDTO> GetHistorial(DateTime desde, DateTime hasta, int? clienteId = null);
+
+        Venta? GetVentaConDetalles(int id);
     }
 }
