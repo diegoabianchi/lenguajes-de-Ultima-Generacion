@@ -91,5 +91,17 @@ namespace TP_GestionVentas.Views
             var frm = _serviceProvider.GetRequiredService<frmHistorialVentas>();
             AbrirFormEnPanel(frm);
         }
+
+        private void categoríasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frm = _serviceProvider.GetRequiredService<frmGestionCategorias>();
+            AbrirFormEnPanel(frm);
+        }
+
+        private void ingresarStockToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frm = _serviceProvider.GetRequiredService<frmAltaStock>();
+            AbrirFormEnPanel(frm);
+        }
     }
 }

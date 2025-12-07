@@ -15,5 +15,6 @@ namespace TP_GestionVentas.Repositories
         int GetStockTotal(int productoId);
         int GetStockPorSucursal(int productoId, int sucursalId);
         IEnumerable<TP_GestionVentas.Models.DTOs.StockDTO> GetStockDetallado(int? sucursalId, string busqueda);
+        void AgregarStock(int productoId, int sucursalId, int cantidad);
     }
 }

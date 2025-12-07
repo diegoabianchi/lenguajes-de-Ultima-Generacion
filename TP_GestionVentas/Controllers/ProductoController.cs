@@ -125,5 +125,11 @@ namespace TP_GestionVentas.Controllers
             return _productoRepository.GetStockDetallado(sucursalId, busqueda).ToList();
         }
 
+        public void SumarStock(int productoId, int sucursalId, int cantidad)
+        {
+            if (cantidad <= 0) throw new Exception("La cantidad debe ser mayor a cero.");
+            _productoRepository.AgregarStock(productoId, sucursalId, cantidad);
+        }
+
     }
 }

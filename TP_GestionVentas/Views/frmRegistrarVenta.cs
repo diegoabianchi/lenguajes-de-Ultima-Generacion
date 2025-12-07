@@ -308,16 +308,11 @@ namespace TP_GestionVentas.Views
 
         private void ActualizarTotal()
         {
-            // 1. Suma bruta de los productos
             decimal subtotal = _carrito.Sum(x => x.Subtotal);
-
-            // 2. Calcular monto a descontar
             decimal montoDescuento = subtotal * _porcentajeDescuento;
-
-            // 3. Total Final
             decimal totalFinal = subtotal - montoDescuento;
 
-            // 4. Mostrar en pantalla
+            // Mostrar en pantalla
             if (_porcentajeDescuento > 0)
             {
                 lblDescuento.Text = $"Descuento ({_porcentajeDescuento * 100}%): -{montoDescuento.ToString("C")}";

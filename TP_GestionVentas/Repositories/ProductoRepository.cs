@@ -85,5 +85,21 @@ namespace TP_GestionVentas.Repositories
             .ThenBy(x => x.Producto)
             .ToList();
         }
+
+        public void AgregarStock(int productoId, int sucursalId, int cantidad)
+        {
+            var stock = _context.Stocks.FirstOrDefault(s => s.ProductoId == productoId && s.SucursalId == sucursalId);
+            if (stock == null)
+            {
+                stock = new Stock { ProductoId = productoId, SucursalId = sucursalId, Cantidad = cantidad };
+                _context.Stocks.Add(stock);
+            }
+            else
+            {
+                stock.Cantidad += cantidad;
+                _context.Stocks.Update(stock);
+            }
+            _context.SaveChanges();
+        }
     }
 }

@@ -71,14 +71,22 @@ namespace TP_GestionVentas.Views
                 }
 
                 var historial = _controller.ObtenerHistorial(desde, hasta, clienteId);
+
+                dgvDetallesVenta.DataSource = null;
+                lblDetalle.Text = "Seleccione una venta para ver detalles";
                 dgvVentas.DataSource = historial;
 
-                // Limpiar detalles
-                dgvDetallesVenta.DataSource = null;
 
                 // Formato moneda
                 if (dgvVentas.Columns["Total"] != null)
+                {
                     dgvVentas.Columns["Total"].DefaultCellStyle.Format = "C2";
+                }
+                // Limpiamos si no trajo nada
+                if (historial.Count == 0)
+                {
+                    dgvDetallesVenta.DataSource = null;
+                }
             }
             catch (Exception ex)
             {

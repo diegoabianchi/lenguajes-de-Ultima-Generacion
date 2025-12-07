@@ -42,6 +42,7 @@ namespace TP_GestionVentas
                     services.AddTransient<VendedorController>();
                     services.AddTransient<VentaController>();
                     services.AddTransient<ReporteController>();
+                    services.AddTransient<CategoriaController>();
 
                     // D. Registrar Formularios (Vistas)
                     services.AddTransient<frmMenuPrincipal>();
@@ -55,6 +56,8 @@ namespace TP_GestionVentas
                     services.AddTransient<frmConsultaStock>();
                     services.AddTransient<frmReportes>();
                     services.AddTransient<frmHistorialVentas>();
+                    services.AddTransient<frmGestionCategorias>();
+                    services.AddTransient<frmAltaStock>();
 
                 })
                 .Build();

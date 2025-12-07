@@ -35,6 +35,7 @@
             mnuProductosPadre = new ToolStripMenuItem();
             mnuProductos = new ToolStripMenuItem();
             mnuStock = new ToolStripMenuItem();
+            categoríasToolStripMenuItem = new ToolStripMenuItem();
             ventasToolStripMenuItem = new ToolStripMenuItem();
             mnuNuevaVenta = new ToolStripMenuItem();
             mnuHistorialVentas = new ToolStripMenuItem();
@@ -44,6 +45,7 @@
             mnuAcercaDe = new ToolStripMenuItem();
             mnuSalir = new ToolStripMenuItem();
             panelContenedor = new Panel();
+            ingresarStockToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -58,7 +60,7 @@
             // 
             // gestiónToolStripMenuItem
             // 
-            gestiónToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { mnuClientes, mnuVendedores, mnuProductosPadre });
+            gestiónToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { mnuClientes, mnuVendedores, mnuProductosPadre, categoríasToolStripMenuItem });
             gestiónToolStripMenuItem.Name = "gestiónToolStripMenuItem";
             gestiónToolStripMenuItem.Size = new Size(59, 20);
             gestiónToolStripMenuItem.Text = "Gestión";
@@ -66,22 +68,22 @@
             // mnuClientes
             // 
             mnuClientes.Name = "mnuClientes";
-            mnuClientes.Size = new Size(135, 22);
+            mnuClientes.Size = new Size(180, 22);
             mnuClientes.Text = "Clientes";
             mnuClientes.Click += mnuClientes_Click;
             // 
             // mnuVendedores
             // 
             mnuVendedores.Name = "mnuVendedores";
-            mnuVendedores.Size = new Size(135, 22);
+            mnuVendedores.Size = new Size(180, 22);
             mnuVendedores.Text = "Vendedores";
             mnuVendedores.Click += mnuVendedores_Click;
             // 
             // mnuProductosPadre
             // 
-            mnuProductosPadre.DropDownItems.AddRange(new ToolStripItem[] { mnuProductos, mnuStock });
+            mnuProductosPadre.DropDownItems.AddRange(new ToolStripItem[] { mnuProductos, mnuStock, ingresarStockToolStripMenuItem });
             mnuProductosPadre.Name = "mnuProductosPadre";
-            mnuProductosPadre.Size = new Size(135, 22);
+            mnuProductosPadre.Size = new Size(180, 22);
             mnuProductosPadre.Text = "Productos";
             // 
             // mnuProductos
@@ -97,6 +99,13 @@
             mnuStock.Size = new Size(184, 22);
             mnuStock.Text = "Disponibilidad/Stock";
             mnuStock.Click += mnuStock_Click;
+            // 
+            // categoríasToolStripMenuItem
+            // 
+            categoríasToolStripMenuItem.Name = "categoríasToolStripMenuItem";
+            categoríasToolStripMenuItem.Size = new Size(180, 22);
+            categoríasToolStripMenuItem.Text = "Categorías";
+            categoríasToolStripMenuItem.Click += categoríasToolStripMenuItem_Click;
             // 
             // ventasToolStripMenuItem
             // 
@@ -163,6 +172,13 @@
             panelContenedor.Size = new Size(977, 551);
             panelContenedor.TabIndex = 1;
             // 
+            // ingresarStockToolStripMenuItem
+            // 
+            ingresarStockToolStripMenuItem.Name = "ingresarStockToolStripMenuItem";
+            ingresarStockToolStripMenuItem.Size = new Size(184, 22);
+            ingresarStockToolStripMenuItem.Text = "Ingresar Stock";
+            ingresarStockToolStripMenuItem.Click += ingresarStockToolStripMenuItem_Click;
+            // 
             // frmMenuPrincipal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -197,5 +213,7 @@
         private Panel panelContenedor;
         private ToolStripMenuItem mnuProductos;
         private ToolStripMenuItem mnuStock;
+        private ToolStripMenuItem categoríasToolStripMenuItem;
+        private ToolStripMenuItem ingresarStockToolStripMenuItem;
     }
 }
